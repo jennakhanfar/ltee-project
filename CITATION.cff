@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "LTEE Project"
+abstract: "A reproducible analysis project for LTEE variant calling by Jenna"
+type: software
+authors:
+  - given-names: "Jenna"
+    family-names: "Khanfar"
+    email: "jenna.khanfar@mbzuai.ac.ae"
+repository-code: "https://github.com/jennakhanfar/ltee-project"
+license: MIT
+version: 0.1.0
+date-released: "2026-10-26"
