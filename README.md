@@ -38,8 +38,19 @@ Each folder has its own `README.md` with more detail.
 
 ## Data
 
-Describe here where the raw data comes from (repository, accession or DOI,
-license) and how it is downloaded. List checksums in `metadata/`.
+Raw reads: trimmed and subsampled LTEE reads prepared by Data Carpentry,
+from [figshare](https://doi.org/10.6084/m9.figshare.7726454)
+(`sub.tar.gz`, CC0). The original runs are in NCBI BioProject PRJNA295606:
+SRR2589044, SRR2584863 and SRR2584866.
+
+The reference is *E. coli* B str. REL606, NCBI assembly
+GCA_000017985.1_ASM1798v1.
+
+From the project folder, run `pixi run download` to download the raw files,
+verify their checksums and make them read-only. Download URLs and provider
+MD5 checksums are in `metadata/sources.tsv`; SHA-256 checksums of the stored
+files are in `metadata/checksums.sha256`. Sample descriptions are in
+`metadata/samples.tsv`.
 
 ## How to cite
 
