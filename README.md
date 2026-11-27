@@ -1,6 +1,6 @@
 # LTEE Project
 
-[![DOI](https://zenodo.org/badge/github/1437194573.svg)](https://doi.org/10.5281/zenodo.24534892)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24534892.svg)](https://doi.org/10.5281/zenodo.24534892)
 
 ## What is this project about?
 
