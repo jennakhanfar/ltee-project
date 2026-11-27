@@ -1,5 +1,7 @@
 # LTEE Project
 
+[![DOI](https://zenodo.org/badge/github/1437194573.svg)](https://doi.org/10.5281/zenodo.24534892)
+
 ## What is this project about?
 
 Variant calling on three *E. coli* clones from the Long-Term Evolution
