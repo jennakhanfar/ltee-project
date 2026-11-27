@@ -51,19 +51,19 @@ Each folder has its own `README.md` with more detail.
 
 ## Hardware
 
-Measured on a MacBook Air (Apple M4, 10 cores, 32 GB RAM, macOS), starting
-from a fresh clone with `pixi install --locked` already done:
+Measured on a MacBook Air (Apple M4, 10 cores, 24 GB RAM, macOS), starting
+from a fresh clone with the environments already installed (`pixi install --locked`):
 
 | Step | Wall time |
 |------|-----------|
-| `pixi install --locked --all` | about 7 s |
 | `pixi run reproduce` (download, QC, Snakemake pipeline, report) | about 3 min |
 | `pixi run compare-workflows` (Nextflow run and comparison) | about 1 min |
 
-Peak memory was about 0.5 GB. Disk use is about 350 MB for `data/` and 200 MB
-for `results/`. Any 64-bit Linux or macOS machine with 4 GB RAM and 1 GB of
-free disk should be enough. Times exclude the one-off download of the Pixi
-environment on a machine that has never run it.
+Peak memory was about 0.4 GB. Disk use is about 3.7 GB for the Pixi
+environments, 350 MB for `data/` and 200 MB for `results/`. Any 64-bit Linux or
+macOS machine with 4 GB RAM and about 5 GB of free disk should be enough.
+Times exclude the one-off download of the Pixi environments on a machine that
+has never run it.
 
 ## Outputs
 
