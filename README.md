@@ -1,8 +1,21 @@
 # LTEE Project
 
-A reproducible analysis project for LTEE variant calling by Jenna
+## What is this project about?
 
-Author: Jenna Khanfar
+Variant calling on three *E. coli* clones from the Long-Term Evolution
+Experiment (LTEE), with a sensitivity analysis of the minimum-read-depth
+filter (depths 2, 5, 10 and 15). The same pipeline is implemented as a shell
+script, Snakemake and Nextflow, and the three give identical variant calls.
+Everything is rebuilt from the raw reads with one command.
+
+Author: Jenna Khanfar (ORCID 0009-0008-1641-5960)
+
+## Is there a related publication?
+
+No publication of its own. The data come from the LTEE; the main reference is
+Tenaillon et al. 2016, *Nature* 536:165-170,
+[doi:10.1038/nature18959](https://doi.org/10.1038/nature18959). The analysis
+follows the Data Carpentry *Wrangling Genomics* lesson.
 
 ## Reproduce the results
 
@@ -17,7 +30,7 @@ pixi run reproduce    # downloads the raw data and rebuilds every result
 `pixi run reproduce` must work on a fresh clone of this repository. A GitHub
 Action (`.github/workflows/reproduce.yml`) checks that on every push.
 
-## What is where
+## What is in this repository?
 
 | Folder | What goes in it | Rule |
 |--------|-----------------|------|
@@ -35,6 +48,37 @@ Action (`.github/workflows/reproduce.yml`) checks that on every push.
 | `containers/` | Dockerfile and Apptainer recipe | Committed. |
 
 Each folder has its own `README.md` with more detail.
+
+## Hardware
+
+Measured on a MacBook Air (Apple M4, 10 cores, 32 GB RAM, macOS), starting
+from a fresh clone with `pixi install --locked` already done:
+
+| Step | Wall time |
+|------|-----------|
+| `pixi install --locked --all` | about 7 s |
+| `pixi run reproduce` (download, QC, Snakemake pipeline, report) | about 3 min |
+| `pixi run compare-workflows` (Nextflow run and comparison) | about 1 min |
+
+Peak memory was about 0.5 GB. Disk use is about 350 MB for `data/` and 200 MB
+for `results/`. Any 64-bit Linux or macOS machine with 4 GB RAM and 1 GB of
+free disk should be enough. Times exclude the one-off download of the Pixi
+environment on a machine that has never run it.
+
+## Outputs
+
+After `pixi run reproduce`, in `results/` (not committed):
+
+- `qc/`: FastQC and MultiQC quality reports for the reads.
+- `bam/`, `bcf/`: alignments and raw variant calls.
+- `vcf/*_final_variants.vcf`: the final filtered variants per sample
+  (SRR2584863: 25, SRR2584866: 775, SRR2589044: 10).
+- `sensitivity/`: variant calls at depth filters 2, 5, 10 and 15.
+- `stats/`: alignment and variant statistics.
+
+The report `reports/ltee-report.html` is rendered from
+`reports/ltee-report.qmd`, with every number and figure computed at render
+time. `pixi run compare-workflows` checks that Snakemake and Nextflow agree.
 
 ## Data
 
@@ -58,14 +102,20 @@ See `CITATION.cff`. GitHub shows a "Cite this repository" button for it.
 
 ## License
 
-MIT, see `LICENSE`.
+- Code: MIT, see `LICENSE`.
+- Text (report, documentation): CC BY 4.0.
+- Data: the raw reads are CC0 (Data Carpentry, figshare). This repository
+  contains no raw data; the derived results are released under CC0 as well.
+
+## Contact
+
+Jenna Khanfar, jenna.khanfar@mbzuai.ac.ae. For questions about the project,
+open an issue on GitHub; see `CONTRIBUTING.md`.
 
 ---
 Project layout generated from the CBIO7501 project template
 (<https://github.com/khan-lab/cbio7501-f26/tree/main/templates/cookiecutter-repro-project>).
 
-Practice project from the Reproducible and Open Science lessons.
-
 ## Container
 
-Docker image built from pixi.lock: `docker build --platform linux/amd64 -f containers/Dockerfile --build-arg ENV_NAME=pipeline -t ltee-project:0.1.0 .`
+Docker image built from pixi.lock: `docker build --platform linux/amd64 -f containers/Dockerfile --build-arg ENV_NAME=pipeline -t ltee-project:1.0.0 .`
