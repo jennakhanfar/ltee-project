@@ -96,6 +96,14 @@ MD5 checksums are in `metadata/sources.tsv`; SHA-256 checksums of the stored
 files are in `metadata/checksums.sha256`. Sample descriptions are in
 `metadata/samples.tsv`.
 
+## Data and code availability
+
+The raw reads are public (figshare, CC0; original runs in NCBI BioProject
+PRJNA295606) and are downloaded and checksum-verified by `pixi run download`.
+No raw data are stored in this repository. All code is in this repository and
+is archived on Zenodo with a DOI (see the badge above and `CITATION.cff`).
+The data contain no sensitive information.
+
 ## How to cite
 
 See `CITATION.cff`. GitHub shows a "Cite this repository" button for it.
